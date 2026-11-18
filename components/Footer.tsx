@@ -69,7 +69,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Syntra Agency. All rights reserved.</p>
-          <p>Website coming soon — to be hosted on Vercel.</p>
+          <p>Hosted on Vercel · Design. Build. Grow.</p>
         </div>
       </div>
     </footer>

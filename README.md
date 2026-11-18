@@ -2,6 +2,9 @@
 
 Marketing website for Syntra Agency, built with Next.js 16, React 19, Tailwind CSS v4 and TypeScript.
 
+**Live:** https://syntra-website-eta.vercel.app  
+**Repository:** https://github.com/muthuisamuel588-droid/syntra-website
+
 ## Run locally
 
 ```bash
