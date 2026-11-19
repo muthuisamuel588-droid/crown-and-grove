@@ -8,8 +8,9 @@ un-premultiplying against the derived alpha.
 from pathlib import Path
 from PIL import Image
 
-SRC = Path(r"C:\Users\psamir\Downloads\1000969305.png")
-DST = Path(r"C:\Users\psamir\Documents\my projects\syntra-website\public\syntra-logo.png")
+PROJECT = Path(__file__).resolve().parents[1]
+SRC = PROJECT.parent / "Syntra_Documentation" / "1000969305.png"
+DST = PROJECT / "public" / "syntra-logo.png"
 FLOOR = 8  # background pixels top out around RGB 7
 
 src = Image.open(SRC).convert("RGB")
