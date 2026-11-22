@@ -65,7 +65,7 @@ The site publishes `/sitemap.xml`, `/robots.txt`, canonical URLs and Organizatio
 
 ## Design & motion
 
-- Logos and icons are copied from the official Crown & Grove brand kit at `C:\Users\psamir\Desktop\Crown & Grove\Logos` (selected Concept 04). The palette is ink `#1A1A1A`, gold `#D4AF37` and cream `#F7F4EC`, defined in `app/globals.css`.
+- Logos and icons come from the official Crown & Grove brand kit (selected Concept 04). The current cream-theme palette is cream `#F7F4EC`, deep green `#1B4D3E`, gold `#C8A951` and copper `#B87333`, defined in `app/globals.css`.
 - Motion: staggered hero entrance, scroll-triggered reveals, count-up stats, drifting hero artwork, animated gradient headlines, button light sweep, and an infinite service ticker.
 - All motion respects `prefers-reduced-motion`, and a `<noscript>` fallback keeps content visible without JavaScript.
 
@@ -76,4 +76,4 @@ The site publishes `/sitemap.xml`, `/robots.txt`, canonical URLs and Organizatio
 - Header/footer: `components/Header.tsx`, `components/Footer.tsx`
 - Logos: `public/crown-grove-logo.png` (flat, header/footer on cream) and `public/crown-grove-mark.png` (hero/background); favicons are `app/icon.png` and `app/apple-icon.png`; link previews use `public/crown-grove-share.png`
 
-Business rules (launch rate limit, quote validity, deposit split) are kept in sync with the separate Crown & Grove business documentation pack in `../Syntra_Documentation`.
+Business rules (launch rate limit, quote validity, deposit split) are kept in sync with the separate Crown & Grove business documentation pack.
