@@ -54,17 +54,7 @@ The form also offers prefilled `mailto:` links, and the contact page, CTA band a
 4. Set `NEXT_PUBLIC_SITE_URL` to your final Vercel URL (for example `https://crown-and-grove.vercel.app`) so SEO metadata, the sitemap and robots.txt use the correct domain.
 5. Deploy. Vercel auto-detects Next.js — no build configuration needed.
 
-For manual prebuilt production deploys on Windows:
-
-```powershell
-vercel build --prod
-powershell -File scripts\dereference-vercel-functions.ps1
-vercel deploy --prebuilt --prod --yes
-```
-
-The dereference step is required because Windows symlinks in `.vercel/output/functions` otherwise fail during upload.
-
-The Vercel project is connected to the GitHub repository, so a normal `git push` now triggers a production deployment automatically. The manual prebuilt sequence above is only needed for one-off local deploys or if the Git connection is removed.
+The Vercel project is connected to the GitHub repository, so a normal `git push` triggers a production deployment automatically. **Always deploy through Git.** Do not use `vercel build --prod` followed by `vercel deploy --prebuilt` from Windows: Vercel's Windows file tracing misses Turbopack chunks used by dynamic routes (for example `/contact` and `/api/inquiry`), so those routes fail in production with a `ChunkLoadError`. Vercel's own Linux build from Git traces them correctly.
 
 ## Google indexing
 
