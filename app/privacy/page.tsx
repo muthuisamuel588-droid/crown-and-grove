@@ -56,7 +56,7 @@ export default function PrivacyPage() {
           <div>
             <h2 className="text-2xl font-bold text-white">Analytics</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-400">
-              We use Vercel Analytics to understand which pages are visited and which calls to action are used, so we can improve the site. It records page views and interactions such as submitting an inquiry or clicking a quote link. We do not use it to collect the contents of your message, and we do not use it for advertising or sell analytics data.
+              We use Vercel Analytics to understand which pages lead to inquiries so we can improve the site. It records page views, including a thank-you page shown after your brief is successfully delivered. Where our hosting plan supports custom events, it may also record interactions such as clicking a quote link or submitting the form. We do not use it to collect the contents of your message, and we do not use it for advertising or sell analytics data.
             </p>
           </div>
 

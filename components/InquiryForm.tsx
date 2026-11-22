@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { track } from "@vercel/analytics";
 import { contact, emailUrl, services, whatsappUrl } from "@/lib/data";
 
@@ -14,9 +15,10 @@ const budgets = [
   "Not sure yet",
 ];
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "error";
 
 export default function InquiryForm({ initialService = "" }: { initialService?: string }) {
+  const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [form, setForm] = useState({
@@ -91,30 +93,15 @@ export default function InquiryForm({ initialService = "" }: { initialService?: 
       }
 
       track("Inquiry submitted", { service: form.service });
-      setStatus("success");
-      setMessage("Thank you — your brief is with us. We will reply within one business day.");
+      // The thank-you page view is the conversion signal on Vercel's Hobby plan,
+      // where custom events are not recorded.
+      router.push(`/thank-you?service=${encodeURIComponent(form.service)}`);
       setForm({ name: "", email: "", phone: "", service: "", budget: "", message: "", consent: false, gotcha: "" });
     } catch (err) {
       track("Inquiry failed", { reason: failureReason });
       setStatus("error");
       setMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     }
-  }
-
-  if (status === "success") {
-    return (
-      <div className="card-surface rounded-2xl p-8 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-500/15 text-2xl text-accent-400">✓</div>
-        <h3 className="mt-5 text-2xl font-bold text-white">Brief received</h3>
-        <p className="mt-3 text-sm leading-relaxed text-slate-400">{message}</p>
-        <p className="mt-4 text-xs text-slate-500">
-          Need to reach us sooner? <a className="font-medium text-accent-400 hover:underline" href={whatsappUrl("Hello Crown & Grove, I just sent an inquiry. What happens next?")} target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a> or <a className="text-accent-400 hover:underline" href={`mailto:${contact.email}`}>email us</a>.
-        </p>
-        <button type="button" onClick={() => setStatus("idle")} className="btn-outline mt-6 text-sm">
-          Send another inquiry
-        </button>
-      </div>
-    );
   }
 
   return (
