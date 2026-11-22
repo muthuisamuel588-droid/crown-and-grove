@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import InquiryForm from "@/components/InquiryForm";
 import Reveal from "@/components/Reveal";
-import { contact, whatsappUrl } from "@/lib/data";
+import { contact, services, whatsappUrl } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Contact & Get a Quote",
@@ -9,7 +9,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string | string[] }>;
+}) {
+  const { service: requested } = await searchParams;
+  const serviceParam = Array.isArray(requested) ? requested[0] : requested;
+  const initialService = services.some((s) => s.name === serviceParam)
+    ? (serviceParam as string)
+    : serviceParam === "Not sure yet"
+      ? "Not sure yet"
+      : "";
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-white/10 py-16 sm:py-20">
@@ -27,7 +39,7 @@ export default function ContactPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-          <Reveal><InquiryForm /></Reveal>
+          <Reveal><InquiryForm initialService={initialService} /></Reveal>
 
           <Reveal delay={120}>
           <aside className="space-y-6">

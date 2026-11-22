@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import { categories, pricing, services, type Service } from "@/lib/data";
 
@@ -11,9 +12,16 @@ function ServiceCard({ service }: { service: Service }) {
         <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent-500/25 bg-brand-600/20 text-xl text-accent-400">
           {service.icon}
         </div>
-        <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-          {service.category}
-        </span>
+        <div className="flex flex-col items-end gap-1.5">
+          {service.featured && (
+            <span className="rounded-full border border-accent-500/40 bg-accent-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent-400">
+              Start here
+            </span>
+          )}
+          <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+            {service.category}
+          </span>
+        </div>
       </div>
       <h3 className="mt-5 text-lg font-bold leading-snug text-white">{service.name}</h3>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">{service.description}</p>
@@ -33,6 +41,12 @@ function ServiceCard({ service }: { service: Service }) {
           <p className="mt-1 text-xs leading-relaxed text-slate-300">{service.monthly}</p>
         </div>
       )}
+      <Link
+        href={`/contact?service=${encodeURIComponent(service.name)}`}
+        className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg border border-accent-500/30 px-4 py-2 text-sm font-semibold text-accent-400 transition-colors hover:bg-accent-500/10"
+      >
+        Request a quote for this <span aria-hidden>→</span>
+      </Link>
     </article>
   );
 }

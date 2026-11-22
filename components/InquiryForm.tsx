@@ -15,14 +15,14 @@ const budgets = [
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export default function InquiryForm() {
+export default function InquiryForm({ initialService = "" }: { initialService?: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "",
+    service: initialService,
     budget: "",
     message: "",
     consent: false,

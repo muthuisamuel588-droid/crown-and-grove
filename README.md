@@ -64,6 +64,8 @@ vercel deploy --prebuilt --prod --yes
 
 The dereference step is required because Windows symlinks in `.vercel/output/functions` otherwise fail during upload.
 
+The Vercel project is connected to the GitHub repository, so a normal `git push` now triggers a production deployment automatically. The manual prebuilt sequence above is only needed for one-off local deploys or if the Git connection is removed.
+
 ## Google indexing
 
 The site publishes `/sitemap.xml`, `/robots.txt`, canonical URLs and Organization/LocalBusiness structured data. After deployment:
