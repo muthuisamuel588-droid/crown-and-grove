@@ -27,6 +27,12 @@ function ServiceCard({ service }: { service: Service }) {
           <p className="mt-1 text-sm font-bold text-white">{service.standard}</p>
         </div>
       </div>
+      {service.monthly && (
+        <div className="mt-4 rounded-lg border border-accent-500/20 bg-brand-600/10 px-3 py-2">
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-accent-400">Monthly option</p>
+          <p className="mt-1 text-xs leading-relaxed text-slate-300">{service.monthly}</p>
+        </div>
+      )}
     </article>
   );
 }

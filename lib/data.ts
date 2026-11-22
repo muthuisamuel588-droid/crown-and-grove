@@ -5,6 +5,7 @@ export type Service = {
   category: string;
   description: string;
   icon: string;
+  monthly?: string;
 };
 
 export const services: Service[] = [
@@ -20,11 +21,11 @@ export const services: Service[] = [
   { name: "Social bundle (management + marketing)", launch: "KSh 20,000/mo", standard: "KSh 55,000/mo", category: "Social", description: "Both organic and paid handled by Crown & Grove. Ad spend still billed separately.", icon: "✧" },
   { name: "Basic business website", launch: "KSh 15,000", standard: "KSh 45,000", category: "Web", description: "Up to 5 pages, mobile-responsive, basic SEO. Hosting and domain specified in quote.", icon: "▦" },
   { name: "E-commerce website", launch: "KSh 35,000", standard: "KSh 85,000", category: "Web", description: "Catalogue, M-Pesa/card checkout, admin panel. Integrations scoped separately.", icon: "▩" },
-  { name: "Custom software development", launch: "KSh 250,000", standard: "KSh 750,000", category: "Software", description: "Starting price. Requirements discovery and written specification required.", icon: "⌘" },
-  { name: "Mobile app development", launch: "KSh 200,000", standard: "KSh 600,000", category: "Software", description: "Starting price, single platform (Android-first). Cross-platform quoted separately.", icon: "▯" },
-  { name: "POS system development", launch: "KSh 150,000", standard: "KSh 500,000", category: "Software", description: "Single till: checkout, stock, M-Pesa, eTIMS-ready. Tailored per business type across retail, hospitality, wholesale and service businesses. Multi-branch quoted separately.", icon: "▥" },
-  { name: "POS subscription (hosted)", launch: "KSh 3,000/mo", standard: "KSh 8,000/mo", category: "Software", description: "Per till. Includes updates, backups and support. Hardware excluded.", icon: "▧" },
-  { name: "School Operating System", launch: "KSh 150,000 setup + 15,000/mo", standard: "KSh 350,000 setup + 30,000/mo", category: "Software", description: "Student and staff management, M-Pesa fee collection, attendance and timetable, report cards, parent portal and internal server. Access fee also billable per term or annually.", icon: "▩" },
+  { name: "Custom software development", launch: "KSh 250,000", standard: "KSh 750,000", category: "Software", description: "Starting price. Requirements discovery and written specification required.", icon: "⌘", monthly: "Support from KSh 15,000/mo (launch) or 40,000/mo (standard)" },
+  { name: "Mobile app development", launch: "KSh 200,000", standard: "KSh 600,000", category: "Software", description: "Starting price, single platform (Android-first). Cross-platform quoted separately.", icon: "▯", monthly: "Support from KSh 15,000/mo (launch) or 40,000/mo (standard)" },
+  { name: "POS system development", launch: "KSh 150,000", standard: "KSh 500,000", category: "Software", description: "Single till: checkout, stock, M-Pesa, eTIMS-ready. Tailored per business type across retail, hospitality, wholesale and service businesses. Multi-branch quoted separately.", icon: "▥", monthly: "Hosted POS from KSh 3,000/mo per till (launch) or 8,000/mo (standard)" },
+  { name: "POS subscription (hosted)", launch: "KSh 3,000/mo", standard: "KSh 8,000/mo", category: "Software", description: "Per till. Includes updates, backups and support. Hardware excluded.", icon: "▧", monthly: "KSh 3,000/mo (launch) or 8,000/mo (standard), per till" },
+  { name: "School Operating System", launch: "KSh 150,000 setup + 15,000/mo", standard: "KSh 350,000 setup + 30,000/mo", category: "Software", description: "Student and staff management, M-Pesa fee collection, attendance and timetable, report cards, parent portal and internal server. Access fee also billable per term or annually.", icon: "▩", monthly: "Access from KSh 15,000/mo (launch) or 30,000/mo (standard), after setup" },
   { name: "Software management & maintenance", launch: "KSh 15,000/mo", standard: "KSh 40,000/mo", category: "Retainer", description: "Security updates, backups, monitoring, bug fixes and agreed hours for small changes.", icon: "⚙" },
   { name: "Website maintenance care plan", launch: "KSh 5,000/mo", standard: "KSh 15,000/mo", category: "Retainer", description: "Updates, backups, uptime monitoring and content edits. E-commerce at upper end.", icon: "♻" },
   { name: "IT support retainer", launch: "KSh 15,000/mo", standard: "KSh 40,000/mo", category: "Retainer", description: "Remote support for agreed device/user count. On-site and 24/7 quoted separately.", icon: "⚡" },
