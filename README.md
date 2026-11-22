@@ -40,14 +40,9 @@ These are centralised in `lib/data.ts`.
 
 ## Inquiry form and direct contacts
 
-The form posts to `/api/inquiry`. By default it validates the submission and writes it to the server logs (visible in the Vercel function logs). To deliver submissions by email, add these environment variables (see `.env.example`):
+The contact form submits directly from the visitor's browser to FormSubmit, which delivers inquiries to `crownandgroveoff@gmail.com`. The sender's email is set as the reply-to address, so you can reply directly from your inbox. (FormSubmit's free endpoint blocks Vercel server IPs, so the old `/api/inquiry` relay is not used for delivery.)
 
-```bash
-RESEND_API_KEY=re_...
-INQUIRY_FROM_EMAIL="Crown & Grove <your-verified-domain>"
-```
-
-Emails are delivered to `crownandgroveoff@gmail.com` with the sender's email set as the reply-to address. Add the same variables in Vercel → Settings → Environment Variables; without `RESEND_API_KEY`, inquiries are logged but not emailed.
+**One-time setup:** after the first inquiry is submitted, check `crownandgroveoff@gmail.com` for a confirmation email from FormSubmit and click the confirmation link. Until that is done, FormSubmit holds submissions instead of delivering them. No API key or Vercel environment variable is required for email delivery.
 
 The form also offers prefilled `mailto:` links, and the contact page, CTA band and footer include a WhatsApp click-to-chat link. The WhatsApp number and URL helper live in `lib/data.ts` (`contact.whatsapp` and `whatsappUrl()`).
 
@@ -70,7 +65,7 @@ The site publishes `/sitemap.xml`, `/robots.txt`, canonical URLs and Organizatio
 
 ## Design & motion
 
-- Flat logo (`public/crown-grove-logo-dark.png`) has its near-black background converted to true alpha transparency by `scripts/make-crown-grove-logo.py`. The glow logo is used for hero/background treatments.
+- Logos and icons are copied from the official Crown & Grove brand kit at `C:\Users\psamir\Desktop\Crown & Grove\Logos` (selected Concept 04). The palette is ink `#1A1A1A`, gold `#D4AF37` and cream `#F7F4EC`, defined in `app/globals.css`.
 - Motion: staggered hero entrance, scroll-triggered reveals, count-up stats, drifting hero artwork, animated gradient headlines, button light sweep, and an infinite service ticker.
 - All motion respects `prefers-reduced-motion`, and a `<noscript>` fallback keeps content visible without JavaScript.
 
@@ -79,6 +74,6 @@ The site publishes `/sitemap.xml`, `/robots.txt`, canonical URLs and Organizatio
 - Colours and reusable styles: `app/globals.css`
 - Services, projects, articles, contact details and pricing rules: `lib/data.ts`
 - Header/footer: `components/Header.tsx`, `components/Footer.tsx`
-- Logos: `public/crown-grove-logo-dark.png` (flat, header) and `public/crown-grove-mark-dark.png` (hero/background)
+- Logos: `public/crown-grove-logo.png` (flat, header/footer on cream) and `public/crown-grove-mark.png` (hero/background); favicons are `app/icon.png` and `app/apple-icon.png`; link previews use `public/crown-grove-share.png`
 
 Business rules (launch rate limit, quote validity, deposit split) are kept in sync with the separate Crown & Grove business documentation pack in `../Syntra_Documentation`.

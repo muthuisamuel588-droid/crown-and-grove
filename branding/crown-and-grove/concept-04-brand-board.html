@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crown &amp; Grove — Concept 04 Brand Board</title>
+  <style>
+    :root {
+      --charcoal: #1A1A1A;
+      --gold: #D4AF37;
+      --cream: #F7F4EC;
+      --muted: #8A8A8A;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      padding: 56px 32px 90px;
+    }
+    header { max-width: 1080px; margin: 0 auto 52px; text-align: center; }
+    .eyebrow {
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 14px;
+    }
+    h1 { font-size: 44px; font-weight: 600; letter-spacing: 0.06em; margin: 0 0 12px; }
+    header p { margin: 0; color: #6B6B6B; font-size: 14px; letter-spacing: 0.04em; }
+    .section { max-width: 1080px; margin: 0 auto 44px; }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--muted); font-weight: 700; margin-bottom: 16px;
+      border-bottom: 1px solid #DDD8CC; padding-bottom: 10px;
+    }
+    .panel {
+      background: #fff; border: 1px solid #E4E0D6; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 36px; min-height: 220px;
+      box-shadow: 0 8px 28px rgba(26,26,26,0.04);
+    }
+    .panel.dark { background: var(--charcoal); }
+    .panel img { max-width: 100%; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .palette { display: flex; gap: 16px; flex-wrap: wrap; }
+    .colour {
+      flex: 1; min-width: 150px; background: #fff; border: 1px solid #E4E0D6;
+      border-radius: 4px; overflow: hidden;
+    }
+    .colour-chip { height: 90px; }
+    .colour-info { padding: 14px 16px; }
+    .colour-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .colour-hex { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+    .scales { display: flex; align-items: flex-end; gap: 34px; flex-wrap: wrap; }
+    .scale-item { text-align: center; }
+    .scale-item img { display: block; margin: 0 auto 10px; }
+    .scale-item span { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; }
+    .note {
+      max-width: 1080px; margin: 40px auto 0; font-size: 12px; line-height: 1.8;
+      color: #7A7A7A; border-left: 3px solid var(--gold); padding-left: 18px;
+    }
+    @media (max-width: 760px) {
+      .two-col { grid-template-columns: 1fr; }
+      body { padding: 32px 16px 60px; }
+      h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Selected Direction</div>
+    <h1>CROWN &amp; GROVE</h1>
+    <p>Concept 04 — Geometric Badge · Brand Board</p>
+  </header>
+
+  <section class="section">
+    <div class="section-label">Primary Mark</div>
+    <div class="panel"><img src="concept-04-primary.svg" alt="Primary badge" width="200" height="200" /></div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Colour Palette</div>
+    <div class="palette">
+      <div class="colour"><div class="colour-chip" style="background:#1A1A1A"></div><div class="colour-info"><div class="colour-name">Charcoal</div><div class="colour-hex">#1A1A1A · PRIMARY</div></div></div>
+      <div class="colour"><div class="colour-chip" style="background:#D4AF37"></div><div class="colour-info"><div class="colour-name">Metallic Gold</div><div class="colour-hex">#D4AF37 · ACCENT</div></div></div>
+      <div class="colour"><div class="colour-chip" style="background:#FFFFFF;border-bottom:1px solid #E4E0D6"></div><div class="colour-info"><div class="colour-name">White</div><div class="colour-hex">#FFFFFF · BACKGROUND</div></div></div>
+      <div class="colour"><div class="colour-chip" style="background:#F7F4EC"></div><div class="colour-info"><div class="colour-name">Cream</div><div class="colour-hex">#F7F4EC · SUPPORT</div></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Lockups</div>
+    <div class="panel"><img src="concept-04-lockup-horizontal.svg" alt="Horizontal lockup" width="520" /></div>
+    <div style="height:24px"></div>
+    <div class="panel"><img src="concept-04-lockup-stacked.svg" alt="Stacked lockup" width="330" /></div>
+    <div style="height:24px"></div>
+    <div class="panel"><img src="concept-04-wordmark.svg" alt="Wordmark" width="480" /></div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Variations</div>
+    <div class="two-col">
+      <div class="panel dark"><img src="concept-04-dark.svg" alt="Dark background variation" width="180" height="180" /></div>
+      <div class="panel"><img src="concept-04-mono.svg" alt="Single colour variation" width="180" height="180" /></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Favicon Scales</div>
+    <div class="panel">
+      <div class="scales">
+        <div class="scale-item"><img src="concept-04-favicon.svg" width="64" height="64" alt="64 pixel" /><span>64 PX</span></div>
+        <div class="scale-item"><img src="concept-04-favicon.svg" width="32" height="32" alt="32 pixel" /><span>32 PX</span></div>
+        <div class="scale-item"><img src="concept-04-favicon.svg" width="16" height="16" alt="16 pixel" /><span>16 PX</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">
+    Note: the wordmark and lockups use system sans-serif fonts (Helvetica Neue / Arial). For a final identity, replace with a licensed typeface of similar character — a geometric grotesque such as Inter, Suisse Int'l or Neue Haas Grotesk — and convert the letterforms to outlines.
+  </div>
+</body>
+</html>

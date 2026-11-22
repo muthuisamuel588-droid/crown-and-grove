@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" width="200" height="220" role="img" aria-label="Crown and Grove crown monogram">
+  <rect width="200" height="220" fill="#FFFFFF"/>
+  <!-- crown above the letters -->
+  <g fill="#C8A951">
+    <path d="M 55 78 L 68 42 L 90 62 L 110 28 L 130 62 L 152 42 L 165 78 Z"/>
+    <rect x="55" y="80" width="110" height="12" rx="2"/>
+    <circle cx="68" cy="38" r="4"/>
+    <circle cx="110" cy="24" r="4.5"/>
+    <circle cx="152" cy="38" r="4"/>
+  </g>
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700">
+    <text x="22" y="180" fill="#1B4D3E">C</text>
+    <text x="93" y="180" fill="#1B4D3E">G</text>
+  </g>
+</svg>

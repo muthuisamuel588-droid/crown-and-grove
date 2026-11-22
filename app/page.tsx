@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -8,8 +9,12 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { posts, services } from "@/lib/data";
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 const stats = [
-  { value: 18, suffix: "", label: "Services offered" },
+  { value: services.length, suffix: "", label: "Services offered" },
   { value: 2, suffix: "", label: "Rate options" },
   { value: 1, suffix: "", label: "Shared point of contact" },
   { value: 100, suffix: "%", label: "Locally built" },
@@ -28,7 +33,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0">
-          <Image src="/syntra-glow.png" alt="" fill priority className="animate-drift object-cover object-center opacity-40" />
+          <Image src="/crown-grove-mark.png" alt="" fill priority className="animate-drift object-cover object-center opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/85 to-ink-950" />
           <div className="bg-grid absolute inset-0 opacity-50" />
         </div>
@@ -79,7 +84,7 @@ export default function HomePage() {
         <SectionHeading
           label="What we do"
           title="Everything your business needs to show up and sell"
-          description="From a first logo to a full POS system, Syntra is the single team behind your digital presence. Pick one service or the whole stack."
+          description="From a first logo to a full POS system, Crown & Grove is the single team behind your digital presence. Pick one service or the whole stack."
           href="/services"
           linkLabel="All services & rates"
         />
@@ -93,7 +98,9 @@ export default function HomePage() {
               </div>
               <h3 className="mt-5 text-lg font-bold text-white">{service.name}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-400">{service.description}</p>
-              <p className="mt-5 text-sm font-bold text-accent-400">From {service.launch}</p>
+              <p className="mt-5 text-sm font-bold text-accent-400">
+                {service.launch.startsWith("KSh") ? `From ${service.launch}` : service.launch}
+              </p>
               </article>
             </Reveal>
           ))}
@@ -134,14 +141,14 @@ export default function HomePage() {
         <PortfolioGrid limit={3} />
       </section>
 
-      {/* Why Syntra */}
+      {/* Why Crown & Grove */}
       <section className="border-y border-white/10 bg-ink-900/60 py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2">
           <Reveal>
             <div className="relative flex items-center justify-center">
               <div className="spin-slow pointer-events-none absolute h-[112%] w-[92%] rounded-[2.5rem] border border-dashed border-accent-500/20" />
               <div className="animate-float glow-pulse relative w-full rounded-3xl border border-accent-500/25 bg-gradient-to-br from-brand-800/60 to-ink-900 p-8">
-                <Image src="/syntra-glow.png" alt="Syntra Agency glow logo" width={600} height={400} className="mx-auto h-auto w-full max-w-md object-contain" />
+                <Image src="/crown-grove-mark.png" alt="Crown & Grove glow logo" width={600} height={400} className="mx-auto h-auto w-full max-w-md object-contain" />
               </div>
             </div>
           </Reveal>
@@ -149,11 +156,11 @@ export default function HomePage() {
             <p className="section-label">Why work with us</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">One team. The whole picture.</h2>
             <p className="mt-5 text-base leading-relaxed text-slate-400">
-              Most businesses juggle a designer, a developer and a marketer who never speak to each other. At Syntra, the same people shape your brand, build the platform and run the campaigns — so everything stays consistent.
+              Most businesses juggle a designer, a developer and a marketer who never speak to each other. At Crown & Grove, the same people shape your brand, build the platform and run the campaigns — so everything stays consistent.
             </p>
             <ul className="mt-8 space-y-4">
               {[
-                "Clear written quotes with two rate options to fit your stage.",
+                "Clear written quotes with two rate options — launch rates for our first 10 clients, then standard rates.",
                 "Local payment options including M-Pesa PayBill and account transfer.",
                 "Ongoing care plans so your site and software stay healthy after launch.",
                 "A single contact point across every service we offer.",
@@ -164,7 +171,7 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-            <Link href="/about" className="btn-outline mt-8 text-sm">More about Syntra <span aria-hidden>→</span></Link>
+            <Link href="/about" className="btn-outline mt-8 text-sm">More about Crown & Grove <span aria-hidden>→</span></Link>
           </div>
         </div>
       </section>

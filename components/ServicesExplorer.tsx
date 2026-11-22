@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
-import { categories, services, type Service } from "@/lib/data";
+import { categories, pricing, services, type Service } from "@/lib/data";
 
 function ServiceCard({ service }: { service: Service }) {
   return (
@@ -63,7 +63,7 @@ export default function ServicesExplorer() {
       </div>
 
       <p className="mt-8 text-xs leading-relaxed text-slate-500">
-        Launch rates are introductory pricing for new clients and smaller scopes. Standard rates reflect full-scope work. Final fees, deliverables and timelines are confirmed in a written quote. Ad spend, printing, hosting, third-party licences and transaction charges are excluded unless stated.
+        Launch rates apply to the first {pricing.launchClientLimit} clients, or until the date on your quotation. Standard rates apply afterwards. Quote-based items are priced per order. Final fees, deliverables and timelines are confirmed in a written quote. Ad spend, printing, hosting, third-party licences and transaction charges are excluded unless stated.
       </p>
     </div>
   );

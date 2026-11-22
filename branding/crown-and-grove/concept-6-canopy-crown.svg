@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" width="220" height="200" role="img" aria-label="Crown formed from tree canopy">
+  <rect width="220" height="200" fill="#FFFFFF"/>
+  <g fill="#1B4D3E">
+    <path d="M 45 145 L 70 72 L 98 112 L 120 52 L 142 112 L 170 72 L 195 145 Z"/>
+    <rect x="45" y="147" width="150" height="14" rx="2"/>
+  </g>
+  <g fill="#C8A951">
+    <path d="M 70 72 C 60 52, 78 42, 88 56 C 84 72, 72 76, 70 72 Z"/>
+    <path d="M 120 52 C 110 32, 128 22, 138 36 C 134 52, 122 56, 120 52 Z"/>
+    <path d="M 170 72 C 160 52, 178 42, 188 56 C 184 72, 172 76, 170 72 Z"/>
+  </g>
+</svg>

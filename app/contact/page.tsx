@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import InquiryForm from "@/components/InquiryForm";
 import Reveal from "@/components/Reveal";
-import { contact } from "@/lib/data";
+import { contact, whatsappUrl } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Contact & Get a Quote",
-  description: "Tell Syntra Agency about your project. One team for branding, websites, software, POS and marketing. Email agencysyntra@gmail.com.",
+  description: "Tell Crown & Grove about your project. One team for branding, websites, software, POS and marketing. Email crownandgroveoff@gmail.com.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -38,6 +39,17 @@ export default function ContactPage() {
                   <a href={`mailto:${contact.email}`} className="mt-1 block break-all font-medium text-accent-400 hover:underline">{contact.email}</a>
                 </div>
                 <div>
+                  <p className="text-xs uppercase tracking-wider text-slate-500">WhatsApp</p>
+                  <a
+                    href={whatsappUrl("Hello Crown & Grove, I would like to ask about your services.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block font-medium text-accent-400 hover:underline"
+                  >
+                    {contact.whatsapp} →
+                  </a>
+                </div>
+                <div>
                   <p className="text-xs uppercase tracking-wider text-slate-500">Phone / WhatsApp</p>
                   <p className="mt-1 font-medium text-white">{contact.phone}</p>
                 </div>
@@ -54,7 +66,7 @@ export default function ContactPage() {
 
             <div className="rounded-2xl border border-accent-500/25 bg-accent-500/[0.06] p-7">
               <h2 className="text-xl font-bold text-white">Payment details</h2>
-              <p className="mt-2 text-xs leading-relaxed text-slate-400">Used for all Syntra Agency services.</p>
+              <p className="mt-2 text-xs leading-relaxed text-slate-400">Used for all Crown & Grove services.</p>
               <div className="mt-5 space-y-4 text-sm text-slate-300">
                 <div>
                   <p className="text-xs uppercase tracking-wider text-slate-500">M-Pesa PayBill (KCB)</p>
@@ -70,7 +82,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <p className="mt-5 rounded-lg bg-ink-950/50 p-3 text-xs leading-relaxed text-slate-400">
-                Please confirm these details with Syntra Agency before sending any money.
+                Please confirm these details with Crown & Grove before sending any money.
               </p>
             </div>
 
@@ -79,7 +91,7 @@ export default function ContactPage() {
               <ol className="mt-4 space-y-3 text-sm leading-relaxed text-slate-400">
                 <li><span className="font-semibold text-accent-400">1.</span> We read your brief and may ask a couple of questions.</li>
                 <li><span className="font-semibold text-accent-400">2.</span> You get a written quote with scope, timeline and rate.</li>
-                <li><span className="font-semibold text-accent-400">3.</span> On approval and deposit, work begins.</li>
+                <li><span className="font-semibold text-accent-400">3.</span> On approval and the 60% deposit, work begins; the 40% balance is due before final handover.</li>
               </ol>
             </div>
           </aside>

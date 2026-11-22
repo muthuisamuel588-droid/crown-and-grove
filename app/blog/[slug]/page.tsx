@@ -14,7 +14,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return { title: "Article not found" };
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+  };
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -43,7 +47,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="mt-12 rounded-2xl border border-accent-500/25 bg-accent-500/[0.06] p-6">
           <p className="text-sm font-bold text-white">Want us to handle this for you?</p>
           <p className="mt-2 text-sm leading-relaxed text-slate-400">
-            Syntra builds the brands, websites and systems these articles talk about — and keeps them running afterwards.
+            Crown & Grove builds the brands, websites and systems these articles talk about — and keeps them running afterwards.
           </p>
           <Link href="/contact" className="btn-primary mt-5 text-sm">Talk to us <span aria-hidden>→</span></Link>
         </div>

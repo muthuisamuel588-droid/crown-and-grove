@@ -21,10 +21,10 @@ export default function Header() {
   return (
     <header className="header-enter sticky top-0 z-50 border-b border-white/10 bg-ink-950/85 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
-        <Link href="/" aria-label="Syntra Agency home" onClick={() => setOpen(false)}>
+        <Link href="/" aria-label="Crown & Grove home" onClick={() => setOpen(false)}>
           <Image
-            src="/syntra-logo.png"
-            alt="Syntra Agency"
+            src="/crown-grove-logo.png"
+            alt="Crown & Grove"
             width={168}
             height={56}
             priority

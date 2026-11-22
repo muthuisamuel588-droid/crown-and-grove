@@ -45,8 +45,9 @@ export default function AnimatedCounter({
   }, [value]);
 
   return (
-    <span ref={ref}>
-      {display}{suffix}
+    <span ref={ref} aria-label={`${value}${suffix}`}>
+      <span aria-hidden="true">{display}{suffix}</span>
+      <span className="sr-only">{value}{suffix}</span>
     </span>
   );
 }

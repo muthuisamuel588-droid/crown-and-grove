@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Ampersand hero logo">
+  <rect width="240" height="240" fill="#FFFFFF"/>
+  <text x="120" y="48" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="8" fill="#1B4D3E">CROWN</text>
+  <text x="120" y="182" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="150" fill="#C8A951">&amp;</text>
+  <text x="120" y="214" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="8" fill="#1B4D3E">GROVE</text>
+  <path d="M 172 92 C 186 72, 208 78, 212 96 C 200 114, 178 110, 172 92 Z" fill="#1B4D3E" opacity="0.72"/>
+</svg>

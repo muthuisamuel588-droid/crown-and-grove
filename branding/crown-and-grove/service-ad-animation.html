@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crown &amp; Grove — Service Ad Videos</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #F7F4EC; color: #1A1A1A; padding: 32px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    p.hint { color: #777; font-size: 13px; margin: 0 0 20px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; }
+    button {
+      font: inherit; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      background: #1A1A1A; color: #D4AF37; border: 0; border-radius: 3px;
+      padding: 11px 15px; cursor: pointer; font-size: 12px;
+    }
+    button:hover { background: #1B4D3E; }
+    button.all { background: #1B4D3E; }
+    #status { font-size: 13px; color: #1B4D3E; margin-top: 16px; min-height: 20px; }
+    canvas { display: block; width: 420px; height: 420px; margin-top: 24px; background: #0A1F18; border: 1px solid #DDD8CC; }
+  </style>
+</head>
+<body>
+  <h1>Crown &amp; Grove — Service Ad Videos</h1>
+  <p class="hint">Four 1080&times;1080 service advertisements. Render each individually, or all in sequence. Outputs WebM.</p>
+  <div class="controls">
+    <button data-slug="brand-strategy">01 Brand Strategy</button>
+    <button data-slug="identity-design">02 Identity &amp; Design</button>
+    <button data-slug="digital-experiences">03 Digital Experiences</button>
+    <button data-slug="marketing-content">04 Marketing &amp; Content</button>
+    <button class="all" id="renderAll">Render All</button>
+  </div>
+  <div id="status">Idle</div>
+  <canvas id="c" width="1080" height="1080"></canvas>
+
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+    const status = document.getElementById('status');
+    const GOLD = '#D4AF37';
+    const GOLD_LIGHT = '#E8CC7A';
+    const CREAM = '#F7F4EC';
+    const MINT = '#8FB3A4';
+    const SOFT = '#B9CDC4';
+    const CX = 540, CY = 470;
+
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
+    const easeOutBack = (t) => 1 + 2.2 * Math.pow(t - 1, 3) + 1.2 * Math.pow(t - 1, 2);
+    const step = (t, start, dur) => Math.max(0, Math.min(1, (t - start) / dur));
+
+    function line(x1, y1, x2, y2, w, colour, alpha = 1) {
+      ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = colour; ctx.lineWidth = w; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); ctx.restore();
+    }
+    function circle(x, y, r, w, colour, alpha = 1) {
+      ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = colour; ctx.lineWidth = w;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+    }
+    function txt(text, x, y, size, weight, colour, spacing, alpha = 1, family = "'Helvetica Neue',Arial,sans-serif", align = 'center') {
+      ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = colour;
+      ctx.font = `${weight} ${size}px ${family}`; ctx.textAlign = align; ctx.textBaseline = 'alphabetic';
+      if (spacing) ctx.letterSpacing = spacing + 'px';
+      ctx.fillText(text, x, y); ctx.restore();
+    }
+
+    // ---- Icon renderers (drawn around origin) ----
+    function iconStrategy(a) {
+      ctx.save(); ctx.globalAlpha = a;
+      circle(0, 0, 120, 1.5, GOLD, 0.5);
+      ctx.fillStyle = GOLD;
+      ctx.beginPath(); ctx.moveTo(0, -120); ctx.lineTo(26, 26); ctx.lineTo(0, 0); ctx.lineTo(-26, 26); ctx.closePath(); ctx.fill();
+      ctx.globalAlpha = a * 0.35;
+      ctx.beginPath(); ctx.moveTo(0, 120); ctx.lineTo(26, -26); ctx.lineTo(0, 0); ctx.lineTo(-26, -26); ctx.closePath(); ctx.fill();
+      ctx.globalAlpha = a; ctx.fillStyle = CREAM;
+      ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.fill();
+      [[0,-150,0,-172],[0,150,0,172],[-150,0,-172,0],[150,0,172,0]].forEach(s => line(s[0],s[1],s[2],s[3],2,GOLD,0.7*a));
+      ctx.restore();
+    }
+    function iconIdentity(a) {
+      ctx.save(); ctx.globalAlpha = a;
+      circle(0, 0, 120, 1.5, GOLD, 0.5);
+      ctx.save(); ctx.rotate(Math.PI / 4);
+      ctx.strokeStyle = GOLD; ctx.lineWidth = 4; ctx.strokeRect(-62, -62, 124, 124); ctx.restore();
+      ctx.strokeStyle = GOLD; ctx.lineWidth = 3; ctx.strokeRect(-44, -44, 88, 88);
+      ctx.fillStyle = GOLD; ctx.beginPath(); ctx.arc(0, 0, 16, 0, Math.PI * 2); ctx.fill();
+      [[0,-120],[120,0],[0,120],[-120,0]].forEach(p => { ctx.beginPath(); ctx.arc(p[0],p[1],5,0,Math.PI*2); ctx.fill(); });
+      ctx.restore();
+    }
+    function iconDigital(a) {
+      ctx.save(); ctx.globalAlpha = a;
+      circle(0, 0, 120, 1.5, GOLD, 0.5);
+      ctx.strokeStyle = GOLD; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.roundRect(-86, -62, 172, 112, 6); ctx.stroke();
+      line(-86, -40, 86, -40, 2, GOLD, a);
+      [-74, -62].forEach(x => { ctx.fillStyle = GOLD; ctx.beginPath(); ctx.arc(x, -51, 3, 0, Math.PI*2); ctx.fill(); });
+      [[-60,-12,-20,-12],[-60,6,-36,6],[20,-16,60,-16],[20,2,48,2],[20,20,60,20]].forEach(s => line(s[0],s[1],s[2],s[3],4,GOLD,a));
+      line(-120, 86, 120, 86, 4, GOLD, a);
+      ctx.strokeStyle = GOLD; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.moveTo(-20,80); ctx.lineTo(0,100); ctx.lineTo(20,80); ctx.stroke();
+      ctx.restore();
+    }
+    function iconMarketing(a) {
+      ctx.save(); ctx.globalAlpha = a;
+      circle(0, 0, 120, 1.5, GOLD, 0.5);
+      ctx.strokeStyle = GOLD; ctx.lineWidth = 4; ctx.lineJoin = 'round';
+      ctx.beginPath(); ctx.moveTo(-70,-20); ctx.lineTo(-10,-20); ctx.lineTo(60,-60); ctx.lineTo(60,60); ctx.lineTo(-10,20); ctx.lineTo(-70,20); ctx.closePath(); ctx.stroke();
+      line(-50, 20, -30, 70, 4, GOLD, a);
+      ctx.strokeStyle = GOLD; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.arc(18, 0, 60, -0.9, 0.9); ctx.stroke();
+      ctx.globalAlpha = a * 0.6; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(18, 0, 90, -0.9, 0.9); ctx.stroke();
+      ctx.globalAlpha = a; ctx.fillStyle = GOLD; ctx.beginPath(); ctx.arc(-90, 0, 5, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
+
+    const SERVICES = {
+      'brand-strategy':       { num: '01 / SERVICE', title: 'Brand Strategy',     desc: 'Positioning, research, messaging & direction.', icon: iconStrategy },
+      'identity-design':      { num: '02 / SERVICE', title: 'Identity & Design',  desc: 'Brand systems, visual identity & art direction.', icon: iconIdentity },
+      'digital-experiences':  { num: '03 / SERVICE', title: 'Digital Experiences',desc: 'Websites, products & interfaces that perform.', icon: iconDigital },
+      'marketing-content':    { num: '04 / SERVICE', title: 'Marketing & Content',desc: 'Campaigns, content & growth that compounds.', icon: iconMarketing },
+    };
+
+    function draw(t, slug) {
+      const s = SERVICES[slug];
+      // Background
+      const bg = ctx.createLinearGradient(0, 0, 0, 1080);
+      bg.addColorStop(0, '#1B4D3E'); bg.addColorStop(1, '#0A1F18');
+      ctx.fillStyle = bg; ctx.fillRect(0, 0, 1080, 1080);
+
+      // Tree rings fade in
+      const ringA = ease(step(t, 0, 0.8)) * 0.09;
+      for (let r = 200; r <= 600; r += 100) circle(CX, CY, r, 1.2, GOLD_LIGHT, ringA);
+
+      // Header
+      txt('CROWN & GROVE', CX, 250, 20, 700, GOLD, 7, ease(step(t, 0.2, 0.5)));
+
+      // Icon ring draws
+      const ringP = ease(step(t, 0.4, 1.0));
+      if (ringP > 0) {
+        ctx.save(); ctx.strokeStyle = GOLD; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(CX, CY, 150, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * ringP); ctx.stroke(); ctx.restore();
+      }
+      // Icon appears with slight scale
+      const iconA = ease(step(t, 0.7, 0.6));
+      if (iconA > 0) {
+        ctx.save(); ctx.translate(CX, CY);
+        const sc = 0.85 + 0.15 * easeOutBack(iconA); ctx.scale(sc, sc);
+        s.icon(iconA); ctx.restore();
+      }
+
+      // Number + title rise
+      const textP = ease(step(t, 1.3, 0.7));
+      const rise = (1 - textP) * 26;
+      txt(s.num, CX, 720 + rise, 20, 700, MINT, 5, textP);
+      txt(s.title, CX, 800 + rise, 66, 600, '#FFFFFF', 1, textP);
+
+      // Description
+      txt(s.desc, CX, 856, 26, 400, SOFT, 0, ease(step(t, 1.8, 0.5)));
+
+      // Divider draws
+      const divP = ease(step(t, 2.2, 0.5));
+      if (divP > 0) line(540 - 210 * divP, 900, 540 + 210 * divP, 900, 2, GOLD, 0.7);
+
+      // Tagline
+      txt('WHERE STRATEGY MEETS CREATION', CX, 952, 20, 500, GOLD, 4, ease(step(t, 2.6, 0.5)));
+
+      // CTA box + label
+      const ctaP = ease(step(t, 3.1, 0.5));
+      if (ctaP > 0) {
+        ctx.save(); ctx.globalAlpha = ctaP; ctx.strokeStyle = GOLD; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.roundRect(390, 1000, 300, 56, 2); ctx.stroke(); ctx.restore();
+        txt("LET'S TALK", CX, 1037, 18, 700, GOLD, 5, ctaP);
+      }
+    }
+
+    function pickMime() {
+      const candidates = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'];
+      return candidates.find((m) => MediaRecorder.isTypeSupported(m)) || '';
+    }
+
+    async function render(slug) {
+      const mime = pickMime();
+      if (!mime) { status.textContent = 'MediaRecorder not supported'; return null; }
+      const stream = canvas.captureStream(30);
+      const chunks = [];
+      const recorder = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000 });
+      recorder.ondataavailable = (e) => { if (e.data.size) chunks.push(e.data); };
+      const stopped = new Promise((resolve) => { recorder.onstop = resolve; });
+
+      status.textContent = 'Recording ' + slug + ' ...';
+      draw(0, slug);
+      recorder.start();
+      const start = performance.now();
+      await new Promise((resolve) => {
+        function frame(now) {
+          const t = (now - start) / 1000;
+          draw(t, slug);
+          if (t < 4.5) requestAnimationFrame(frame); else resolve();
+        }
+        requestAnimationFrame(frame);
+      });
+      recorder.stop();
+      await stopped;
+      stream.getTracks().forEach((track) => track.stop());
+
+      const blob = new Blob(chunks, { type: mime });
+      if (blob.size < 1000) { status.textContent = 'FAILED · ' + slug + ' empty, retry'; return null; }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'ad-' + slug + '.webm';
+      document.body.appendChild(a); a.click(); a.remove();
+      status.textContent = 'DONE · ' + slug + ' · ' + blob.size + ' bytes';
+      return blob.size;
+    }
+
+    document.querySelectorAll('button[data-slug]').forEach((btn) => {
+      btn.addEventListener('click', () => render(btn.dataset.slug));
+    });
+    document.getElementById('renderAll').addEventListener('click', async () => {
+      for (const slug of Object.keys(SERVICES)) { await render(slug); }
+      status.textContent = 'ALL DONE';
+    });
+
+    draw(2.2, 'brand-strategy');
+  </script>
+</body>
+</html>

@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import CTABand from "@/components/CTABand";
 import ServicesExplorer from "@/components/ServicesExplorer";
-import { contact } from "@/lib/data";
+import { contact, pricing } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Services & Pricing",
-  description: "All 18 Syntra Agency services with transparent Launch and Standard rates — branding, websites, software, POS, social media and support retainers.",
+  description: "Explore Crown & Grove services — branded merchandise, design, websites, software, POS, social media and support retainers — with Launch, Standard or quote-based rates.",
+  alternates: { canonical: "/services" },
 };
 
 const plans = [
   {
     name: "Launch rate",
-    badge: "Starting out",
-    text: "Introductory pricing for new clients, smaller scopes and businesses testing an idea. Fewer deliverables, faster turnaround.",
+    badge: "First 10 clients",
+    text: `Our introductory rate for the first ${pricing.launchClientLimit} clients, or until the date stated on your quotation — whichever comes first.`,
     highlight: false,
   },
   {
     name: "Standard rate",
-    badge: "Full scope",
-    text: "Our full professional rate for established businesses, complex requirements and work that needs deeper strategy and support.",
+    badge: "After launch offer",
+    text: "Our standard rate once the introductory offer ends. Your written quotation always confirms the rate, scope and deliverables for your project.",
     highlight: true,
   },
 ];
@@ -53,6 +54,15 @@ export default function ServicesPage() {
           ))}
         </div>
 
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-sm leading-relaxed text-slate-400">
+          <p className="font-semibold text-white">Pricing notes</p>
+          <ul className="mt-3 space-y-2">
+            <li>All prices are in Kenya Shillings (KSh). We will confirm whether any applicable taxes are included or additional on your final quotation.</li>
+            <li>A starting price is not a promise that every project can be completed at that price. Complexity, volume, deadlines, licensing, travel and third-party costs can change the fee.</li>
+            <li>Quotes are valid for {pricing.quoteValidityDays} calendar days by default. We will get your written approval before any scope change or additional charge.</li>
+          </ul>
+        </div>
+
         <div className="mt-14">
           <ServicesExplorer />
         </div>
@@ -64,7 +74,10 @@ export default function ServicesPage() {
             <p className="section-label">Payment details</p>
             <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">Simple, local payment</h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              All services use the same payment channels. Confirm the account details with Syntra Agency before sending money.
+              All services use the same payment channels. Confirm the account details with Crown & Grove before sending money.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-400">
+              Unless your quotation states milestones, payment is {pricing.depositPercent}% before work begins and {pricing.balancePercent}% before final handover. Monthly retainers are payable in advance.
             </p>
             <div className="mt-6 space-y-3 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-sm text-slate-300">
               <p className="flex justify-between gap-4"><span className="text-slate-500">M-Pesa PayBill</span><span className="font-semibold text-white">{contact.paybill} (KCB)</span></p>
@@ -79,9 +92,9 @@ export default function ServicesPage() {
             <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">What is not included</h2>
             <ul className="mt-6 space-y-3 text-sm leading-relaxed text-slate-400">
               {[
-                "Advertising spend, printing, hosting fees and third-party software licences.",
-                "M-Pesa, payment gateway and KRA eTIMS transaction or platform charges.",
-                "POS hardware, network/data costs and new features outside an agreed scope.",
+                "Advertising spend, printing, stock assets, fonts, music licences and other third-party costs.",
+                "Domain names, hosting, paid plugins, SMS charges, app-store fees and platform charges (including M-Pesa and KRA eTIMS).",
+                "POS hardware, network/data costs, licences and new features outside an agreed scope.",
                 "Original copywriting, major redesigns and work requested after sign-off.",
               ].map((item) => (
                 <li key={item} className="flex gap-3">
@@ -90,7 +103,7 @@ export default function ServicesPage() {
               ))}
             </ul>
             <p className="mt-6 text-xs text-slate-500">
-              Overdue invoices accrue interest at 2% per month. Full terms are set out in the General Client Service Agreement and the relevant service agreement.
+              Overdue invoices accrue interest at {pricing.latePaymentInterest}. Full terms are set out in the General Client Service Agreement and the relevant service agreement.
             </p>
           </div>
         </div>

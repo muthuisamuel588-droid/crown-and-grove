@@ -16,7 +16,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.category}
           </span>
           <span className="text-4xl font-black text-white/25 transition-transform duration-300 group-hover:translate-x-1">
-            SYNTRA
+            CROWN & GROVE
           </span>
         </div>
       </div>

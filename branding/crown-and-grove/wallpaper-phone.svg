@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 2532" width="1170" height="2532" role="img" aria-label="Crown and Grove phone wallpaper">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="34%" r="85%">
+      <stop offset="0%" stop-color="#1B4D3E"/>
+      <stop offset="55%" stop-color="#123327"/>
+      <stop offset="100%" stop-color="#0A1F18"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8CC7A"/>
+      <stop offset="100%" stop-color="#C8A951"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1170" height="2532" fill="url(#bg)"/>
+
+  <g fill="none" stroke="url(#gold)" stroke-width="1.2" opacity="0.10">
+    <circle cx="585" cy="820" r="240"/>
+    <circle cx="585" cy="820" r="360"/>
+    <circle cx="585" cy="820" r="480"/>
+    <circle cx="585" cy="820" r="600"/>
+    <circle cx="585" cy="820" r="720"/>
+    <circle cx="585" cy="820" r="840"/>
+    <circle cx="585" cy="820" r="960"/>
+  </g>
+
+  <g transform="translate(585,820)">
+    <circle r="220" fill="none" stroke="url(#gold)" stroke-width="4"/>
+    <circle r="197" fill="none" stroke="url(#gold)" stroke-width="1.6" opacity="0.55"/>
+    <circle cy="-209" r="5" fill="#D4AF37"/>
+    <circle cy="209" r="5" fill="#D4AF37"/>
+    <text y="64" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="172" font-weight="600" letter-spacing="-9" fill="url(#gold)">C&amp;G</text>
+  </g>
+
+  <g font-family="'Helvetica Neue',Arial,sans-serif" text-anchor="middle">
+    <text x="585" y="1430" font-size="62" font-weight="600" letter-spacing="7" fill="#FFFFFF">CROWN &amp; GROVE</text>
+    <line x1="400" y1="1478" x2="770" y2="1478" stroke="#D4AF37" stroke-width="2"/>
+    <text x="585" y="1538" font-size="23" font-weight="500" letter-spacing="5" fill="#D4AF37">WHERE STRATEGY MEETS CREATION</text>
+  </g>
+</svg>

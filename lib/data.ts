@@ -8,14 +8,14 @@ export type Service = {
 };
 
 export const services: Service[] = [
-  { name: "Logo design", launch: "KSh 3,500", standard: "KSh 12,000", category: "Design", description: "3 concepts, 2 revision rounds, all file formats. A brand mark built around your business.", icon: "✦" },
+  { name: "Logo design", launch: "KSh 3,500", standard: "KSh 12,000", category: "Design", description: "3 concepts, 2 revision rounds and all final files. Full scope confirmed in your quote.", icon: "✦" },
   { name: "Business cards", launch: "KSh 1,500", standard: "KSh 2,000", category: "Design", description: "Print-ready design artwork. Printing charged separately unless quoted.", icon: "▤" },
-  { name: "Company profile", launch: "KSh 5,000", standard: "KSh 18,000", category: "Design", description: "Up to 12 professionally designed pages that tell your business story.", icon: "▣" },
-  { name: "Social media poster", launch: "KSh 500", standard: "KSh 1,000", category: "Design", description: "One static design for social. Rush requests +30%.", icon: "◈" },
-  { name: "Video editing", launch: "KSh 2,000", standard: "KSh 3,500", category: "Video", description: "Starting rate per finished minute. Reels, promos and motion graphics.", icon: "▶" },
+  { name: "Company profile", launch: "KSh 5,000", standard: "KSh 18,000", category: "Design", description: "Up to 12 designed pages. Content is supplied by you and agreed in the brief.", icon: "▣" },
+  { name: "Social media poster", launch: "KSh 500", standard: "KSh 1,000", category: "Design", description: "One static design. Rush requests +30%; copywriting may cost extra.", icon: "◈" },
+  { name: "Video editing", launch: "KSh 2,000", standard: "KSh 3,500", category: "Video", description: "Starting rate per finished minute. Final fee depends on footage, duration and complexity.", icon: "▶" },
   { name: "Social media management", launch: "KSh 8,000/mo", standard: "KSh 18,000/mo", category: "Social", description: "Organic only: 12 posts a month, 2 platforms, captions, community replies and reporting.", icon: "◎" },
   { name: "Social media marketing", launch: "KSh 15,000/mo", standard: "KSh 45,000/mo", category: "Social", description: "Paid campaigns: strategy, ad creative, targeting, setup, weekly optimization and reports. Ad spend separate.", icon: "◉" },
-  { name: "Social bundle (management + marketing)", launch: "KSh 20,000/mo", standard: "KSh 55,000/mo", category: "Social", description: "Both organic and paid handled by Syntra. Ad spend still billed separately.", icon: "✧" },
+  { name: "Social bundle (management + marketing)", launch: "KSh 20,000/mo", standard: "KSh 55,000/mo", category: "Social", description: "Both organic and paid handled by Crown & Grove. Ad spend still billed separately.", icon: "✧" },
   { name: "Basic business website", launch: "KSh 15,000", standard: "KSh 45,000", category: "Web", description: "Up to 5 pages, mobile-responsive, basic SEO. Hosting and domain specified in quote.", icon: "▦" },
   { name: "E-commerce website", launch: "KSh 35,000", standard: "KSh 85,000", category: "Web", description: "Catalogue, M-Pesa/card checkout, admin panel. Integrations scoped separately.", icon: "▩" },
   { name: "Custom software development", launch: "KSh 250,000", standard: "KSh 750,000", category: "Software", description: "Starting price. Requirements discovery and written specification required.", icon: "⌘" },
@@ -26,9 +26,24 @@ export const services: Service[] = [
   { name: "Website maintenance care plan", launch: "KSh 5,000/mo", standard: "KSh 15,000/mo", category: "Retainer", description: "Updates, backups, uptime monitoring and content edits. E-commerce at upper end.", icon: "♻" },
   { name: "IT support retainer", launch: "KSh 15,000/mo", standard: "KSh 40,000/mo", category: "Retainer", description: "Remote support for agreed device/user count. On-site and 24/7 quoted separately.", icon: "⚡" },
   { name: "Digital marketing", launch: "KSh 5,000/mo", standard: "KSh 20,000/mo", category: "Retainer", description: "Agency fee only. Advertising spend excluded unless stated.", icon: "◊" },
+  { name: "Branded merchandise", launch: "Quote on request", standard: "Quote on request", category: "Branding", description: "Caps, T-shirts, hoodies, jerseys, cups and other branded collateral. Quantity, artwork and decoration method quoted per order.", icon: "❖" },
+  { name: "Branded caps", launch: "Quote on request", standard: "Quote on request", category: "Branding", description: "Printed or embroidered caps. Sizes, colours, quantity and decoration method quoted per order.", icon: "◫" },
+  { name: "Branded T-shirts", launch: "Quote on request", standard: "Quote on request", category: "Branding", description: "Branded T-shirts in your chosen colours and sizes. Printing quantity and method quoted per order.", icon: "◫" },
+  { name: "Branded hoodies", launch: "Quote on request", standard: "Quote on request", category: "Branding", description: "Printed or embroidered hoodies. Sizes, colours, quantity and decoration method quoted per order.", icon: "◫" },
+  { name: "Branded jerseys", launch: "Quote on request", standard: "Quote on request", category: "Branding", description: "Team or promotional jerseys with names, numbers and logos. Quantities quoted per order.", icon: "◫" },
+  { name: "Branded cups", launch: "Quote on request", standard: "Quote on request", category: "Branding", description: "Printed or engraved cups and mugs. Quantity, finish and artwork quoted per order.", icon: "◫" },
 ];
 
-export const categories = ["All", "Design", "Video", "Social", "Web", "Software", "Retainer"];
+export const categories = ["All", "Design", "Branding", "Video", "Social", "Web", "Software", "Retainer"];
+
+// Mirrors the pricing rules in the Crown & Grove business documentation pack.
+export const pricing = {
+  launchClientLimit: 10,
+  quoteValidityDays: 14,
+  depositPercent: 60,
+  balancePercent: 40,
+  latePaymentInterest: "2% per month",
+};
 
 export type Project = {
   title: string;
@@ -40,12 +55,15 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  { title: "Brand identity for a Nairobi café", client: "Confidential client", category: "Branding", summary: "A complete visual identity — logo, palette, typography and menu design — built for a warm, neighbourhood café.", result: "Launched with a consistent look across signage, menus and social.", accent: "from-amber-400 to-orange-500" },
-  { title: "E-commerce store with M-Pesa", client: "Retail SME", category: "Web", summary: "A mobile-first online store with product catalogue, M-Pesa STK Push checkout and an admin dashboard.", result: "Enabled online sales with secure, local payments.", accent: "from-sky-500 to-blue-700" },
-  { title: "POS system for a retail chain", client: "Multi-branch retailer", category: "Software", summary: "A custom point-of-sale system with stock control, M-Pesa reconciliation and eTIMS-ready receipts.", result: "Simplified checkout and reporting across branches.", accent: "from-emerald-500 to-teal-700" },
-  { title: "Social media growth campaign", client: "Service business", category: "Social", summary: "Combined organic content management with targeted paid campaigns across two platforms.", result: "Built a consistent publishing rhythm and measurable engagement.", accent: "from-fuchsia-500 to-purple-700" },
-  { title: "Business website for a consultancy", client: "Professional services", category: "Web", summary: "A clean 5-page website with service pages, team profiles and an inquiry form.", result: "A professional digital presence that converts visitors into leads.", accent: "from-cyan-500 to-indigo-700" },
-  { title: "Promotional video series", client: "Startup", category: "Video", summary: "A set of short-form promo videos and reels for a product launch.", result: "Delivered a consistent set of assets for social and web.", accent: "from-rose-500 to-red-700" },
+  { title: "Crown & Grove rebrand and name system", client: "Crown & Grove (own brand)", category: "Branding", summary: "A full identity refresh built around the Crown & Grove name — ten logo directions explored, Concept 04 selected, then a complete kit of lockups, wordmarks, favicon, mono mark, brand board, posters, ads and wallpapers.", result: "One consistent identity across web, social and print, anchored by ink, gold and cream and the taglines 'Where Strategy Meets Creation' and 'Design. Build. Grow.'.", accent: "from-brand-500 to-ink-900" },
+  { title: "Custom POS & retail management suite", client: "Retail clients (names withheld)", category: "Software", summary: "Point-of-sale systems for retail operations — product catalogues, cashier permission levels, stock tracking, delivery dates, activation and trial controls, and payment reconciliation.", result: "Built, analysed and repaired multiple POS implementations, including installer fixes and a 5-day trial setup.", accent: "from-brand-600 to-ink-900" },
+  { title: "Private booking & live-streaming platform", client: "Private entertainment startup", category: "Software", summary: "Foundation for a booked, one-to-one live entertainment platform: accounts, performer vetting workflow, an upfront-payment ledger and self-hosted live video rooms.", result: "Delivered the hard-to-change core — typed database schema, state machine, payment abstraction and a local-first development setup.", accent: "from-brand-700 to-ink-900" },
+  { title: "Trend Trader — automated trading system", client: "Own product", category: "Automation", summary: "Trend-following trading bot with a strategy engine, ATR-based risk controls, backtester, paper broker and a FastAPI control API, plus an Android control-panel scaffold.", result: "Strategy, risk manager and backtester working on synthetic and crypto market data; live trading kept opt-in.", accent: "from-brand-500 to-brand-800" },
+  { title: "MyVpn — Android WireGuard client", client: "Own product", category: "Mobile", summary: "A minimal Android VPN client built on the official WireGuard tunnel library: import a provider config or enter your own server, then connect without root.", result: "Installable APK for Android 8+ with private keys protected by the Android Keystore.", accent: "from-brand-600 to-brand-900" },
+  { title: "AI department advisor system", client: "Internal R&D", category: "AI", summary: "Designed an AI 'company' structure with department-level advisors and shared context so each assistant stays within its remit.", result: "Produced the advisor architecture and role definitions for further development.", accent: "from-brand-700 to-brand-900" },
+  { title: "Unified social app concept", client: "Internal R&D", category: "Mobile", summary: "Explored a single Android app bringing messaging and short-form social feeds from multiple networks into one place.", result: "Concept and technical direction documented; not a published app.", accent: "from-brand-500 to-ink-900" },
+  { title: "Building security OS concept", client: "Internal R&D", category: "Software", summary: "Explored a security-first operating layer for a building — access control, monitoring and alerting brought into one dashboard.", result: "Requirements and system direction documented for a future build.", accent: "from-brand-600 to-ink-800" },
+  { title: "Project network graph", client: "Internal tool", category: "Data", summary: "An interactive network graph that maps how projects, files and work sessions connect, making a large project archive easier to review and share.", result: "Shareable graph view built and reviewed.", accent: "from-brand-700 to-ink-950" },
 ];
 
 export type Post = {
@@ -68,7 +86,7 @@ export const posts: Post[] = [
       "A professional logo project starts with a brief: your business name, audience, values and where the mark will be used. Without that, design is guesswork.",
       "You should expect multiple original concepts, a defined number of revision rounds, and a full file package — vector formats, colour and black-and-white versions, and clear usage guidance.",
       "At the very low end, you are usually getting a template-based mark with limited files and no real differentiation. That can work as a placeholder, but it rarely builds long-term brand equity.",
-      "At Syntra, our logo packages include three concepts and two revision rounds, with all final files handed over on payment."
+      "At Crown & Grove, our logo packages include three concepts and two revision rounds, with all final files handed over on payment."
     ]
   },
   {
@@ -94,7 +112,7 @@ export const posts: Post[] = [
       "M-Pesa integration usually means one of two things: a PayBill or Till number that customers pay into, or STK Push where a prompt appears on the customer's phone.",
       "For most online stores, STK Push gives the smoothest checkout. It requires Daraja API access, a registered business account and careful callback handling.",
       "The hidden work is reconciliation: matching payments to orders, handling failures and handling refunds. That is where experienced local developers earn their fee.",
-      "Safaricom transaction charges are paid directly by the business. Syntra's integration fee covers the build, not the per-transaction costs."
+      "Safaricom transaction charges are paid directly by the business. Crown & Grove's integration fee covers the build, not the per-transaction costs."
     ]
   },
   {
@@ -114,10 +132,21 @@ export const posts: Post[] = [
 
 export const contact = {
   phone: "+254 729 860 771 / 0712 079 046",
-  email: "agencysyntra@gmail.com",
+  whatsapp: "+254 729 860 771",
+  email: "crownandgroveoff@gmail.com",
   location: "Africa Fuel, Maasai Lodge",
   paybill: "522522",
   account: "1343995795",
-  accountHolder: "SAMUEL MUTHUI (for Syntra Agency business)",
-  socials: "Syntra Agency on all major social media platforms",
+  accountHolder: "SAMUEL MUTHUI (for Crown & Grove business)",
+  socials: "Crown & Grove on all major social media platforms",
 };
+
+export function whatsappUrl(message?: string) {
+  const number = contact.whatsapp.replace(/\D/g, "");
+  const query = message ? `?text=${encodeURIComponent(message)}` : "";
+  return `https://wa.me/${number}${query}`;
+}
+
+export function emailUrl(subject: string, body: string) {
+  return `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}

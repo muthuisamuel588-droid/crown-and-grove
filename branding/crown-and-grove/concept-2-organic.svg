@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" width="220" height="200" role="img" aria-label="Crown and Grove organic monogram with leaf">
+  <rect width="220" height="200" fill="#FFFFFF"/>
+  <g font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="118">
+    <text x="22" y="145" fill="#1B4D3E">C</text>
+    <text x="92" y="145" fill="#B87333">G</text>
+  </g>
+  <!-- leaf unfurling from the G -->
+  <g fill="#B87333">
+    <path d="M 168 52 C 184 30, 208 36, 214 54 C 202 74, 178 74, 168 52 Z"/>
+  </g>
+  <path d="M 171 53 L 211 54" stroke="#FFFFFF" stroke-width="1.6" opacity="0.75" fill="none"/>
+  <path d="M 190 54 C 190 46, 197 40, 205 39" stroke="#FFFFFF" stroke-width="1.2" opacity="0.55" fill="none"/>
+</svg>

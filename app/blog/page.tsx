@@ -6,7 +6,8 @@ import { posts } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Resources",
-  description: "Practical guides on branding, websites, M-Pesa payments, maintenance and social media marketing from Syntra Agency.",
+  description: "Practical guides on branding, websites, M-Pesa payments, maintenance and social media marketing from Crown & Grove.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Crown and Grove interlocked monogram">
+  <rect width="200" height="200" fill="#FFFFFF"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- C : open circular arc, forest green -->
+    <path d="M 115.9 63.2 A 48 48 0 1 0 115.9 136.8" stroke="#1B4D3E" stroke-width="9"/>
+    <!-- G : open arc, antique gold -->
+    <path d="M 148.9 66.1 A 48 48 0 1 0 163 100" stroke="#C8A951" stroke-width="9"/>
+    <!-- G crossbar + descending stem -->
+    <path d="M 163 100 L 132 100 L 132 127" stroke="#C8A951" stroke-width="9"/>
+  </g>
+</svg>

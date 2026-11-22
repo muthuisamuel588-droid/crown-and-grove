@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { posts } from "@/lib/data";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL || "https://syntra-agency.vercel.app";
+const base = process.env.NEXT_PUBLIC_SITE_URL || "https://crown-and-grove.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/about", "/services", "/portfolio", "/blog", "/contact"].map((path) => ({

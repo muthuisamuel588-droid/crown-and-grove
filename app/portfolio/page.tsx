@@ -4,7 +4,8 @@ import PortfolioGrid from "@/components/PortfolioGrid";
 
 export const metadata: Metadata = {
   title: "Our Work",
-  description: "A selection of brands, websites, POS systems and campaigns designed and built by Syntra Agency.",
+  description: "A selection of brands, websites, POS systems and campaigns designed and built by Crown & Grove.",
+  alternates: { canonical: "/portfolio" },
 };
 
 export default function PortfolioPage() {
@@ -18,7 +19,7 @@ export default function PortfolioPage() {
             Work that <span className="text-gradient-animated">earns its place.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-            A look at what we have designed, built and grown. Client names are withheld where confidentiality was requested — the work speaks for itself.
+            A look at what we have designed, built and grown. Client names are withheld where confidentiality was requested, and early R&D concepts are labelled as such — the work speaks for itself.
           </p>
         </div>
       </section>

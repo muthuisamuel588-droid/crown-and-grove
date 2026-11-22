@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" width="200" height="220" role="img" aria-label="Crown and Grove heritage crest">
+  <rect width="200" height="220" fill="#FFFFFF"/>
+  <path d="M 100 22 L 168 48 L 168 112 C 168 152, 138 178, 100 194 C 62 178, 32 152, 32 112 L 32 48 Z" fill="#FFFFFF" stroke="#1B4D3E" stroke-width="3"/>
+  <path d="M 100 33 L 158 55 L 158 110 C 158 146, 132 168, 100 182 C 68 168, 42 146, 42 110 L 42 55 Z" fill="none" stroke="#C8A951" stroke-width="1"/>
+  <path d="M 78 66 L 84 50 L 92 60 L 100 44 L 108 60 L 116 50 L 122 66 Z" fill="#C8A951"/>
+  <text x="100" y="122" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="#1B4D3E">C&amp;G</text>
+</svg>

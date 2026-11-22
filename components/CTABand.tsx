@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { whatsappUrl } from "@/lib/data";
 
 export default function CTABand({
   title = "Ready to build something worth talking about?",
@@ -16,7 +17,8 @@ export default function CTABand({
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300">{description}</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <Link href="/contact" className="btn-primary">Request a free quote <span aria-hidden>→</span></Link>
-          <a href="mailto:agencysyntra@gmail.com" className="btn-outline">Email us directly</a>
+          <a href="mailto:crownandgroveoff@gmail.com" className="btn-outline">Email us directly</a>
+          <a href={whatsappUrl("Hello Crown & Grove, I would like a quote.")} target="_blank" rel="noopener noreferrer" className="btn-outline">Message us on WhatsApp</a>
         </div>
       </div>
     </section>

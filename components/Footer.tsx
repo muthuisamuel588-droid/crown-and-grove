@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { contact } from "@/lib/data";
+import { contact, whatsappUrl } from "@/lib/data";
 
 const explore = [
   { href: "/about", label: "About us" },
@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Image src="/syntra-logo.png" alt="Syntra Agency" width={170} height={56} className="h-12 w-auto object-contain" />
+            <Image src="/crown-grove-logo.png" alt="Crown & Grove" width={170} height={56} className="h-12 w-auto object-contain" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
               A Kenyan creative and technology studio turning ambitious ideas into brands, websites, software and growth.
             </p>
@@ -46,7 +46,10 @@ export default function Footer() {
               </li>
               <li>
                 <span className="block text-xs uppercase tracking-wide text-slate-500">Phone / WhatsApp</span>
-                {contact.phone}
+                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-accent-400">
+                  {contact.whatsapp}
+                </a>
+                <span className="text-slate-500"> / 0712 079 046</span>
               </li>
               <li>
                 <span className="block text-xs uppercase tracking-wide text-slate-500">Location</span>
@@ -61,14 +64,14 @@ export default function Footer() {
               <p><span className="text-slate-500">M-Pesa PayBill</span><br />{contact.paybill} (KCB)</p>
               <p><span className="text-slate-500">Account number</span><br />{contact.account}</p>
               <p className="border-t border-white/10 pt-2 text-xs leading-relaxed text-slate-400">
-                Account holder: {contact.accountHolder}. Please confirm details with Syntra Agency before making payment.
+                Account holder: {contact.accountHolder}. Please confirm details with Crown & Grove before making payment.
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Syntra Agency. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Crown & Grove. All rights reserved.</p>
           <p>Hosted on Vercel · Design. Build. Grow.</p>
         </div>
       </div>

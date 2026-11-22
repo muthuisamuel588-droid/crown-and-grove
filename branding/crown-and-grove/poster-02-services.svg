@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350" role="img" aria-label="Crown and Grove services poster">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1B4D3E"/>
+      <stop offset="100%" stop-color="#0A1F18"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8CC7A"/>
+      <stop offset="100%" stop-color="#C8A951"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <g fill="none" stroke="url(#gold)" stroke-width="1.2" opacity="0.08">
+    <circle cx="960" cy="120" r="200"/>
+    <circle cx="960" cy="120" r="320"/>
+    <circle cx="960" cy="120" r="440"/>
+  </g>
+
+  <g font-family="'Helvetica Neue',Arial,sans-serif">
+    <text x="90" y="150" font-size="20" font-weight="600" letter-spacing="6" fill="#D4AF37">CROWN &amp; GROVE</text>
+    <text x="90" y="245" font-size="76" font-weight="600" letter-spacing="2" fill="#FFFFFF">WHAT WE DO</text>
+    <line x1="94" y1="292" x2="986" y2="292" stroke="#D4AF37" stroke-width="2" opacity="0.7"/>
+  </g>
+
+  <g font-family="'Helvetica Neue',Arial,sans-serif">
+    <text x="90" y="420" font-size="34" font-weight="700" fill="#D4AF37">01</text>
+    <text x="180" y="420" font-size="42" font-weight="600" fill="#FFFFFF">Brand Strategy</text>
+    <text x="180" y="462" font-size="24" fill="#B9CDC4">Positioning, research, messaging and direction.</text>
+
+    <text x="90" y="580" font-size="34" font-weight="700" fill="#D4AF37">02</text>
+    <text x="180" y="580" font-size="42" font-weight="600" fill="#FFFFFF">Identity &amp; Design</text>
+    <text x="180" y="622" font-size="24" fill="#B9CDC4">Brand systems, visual identity and art direction.</text>
+
+    <text x="90" y="740" font-size="34" font-weight="700" fill="#D4AF37">03</text>
+    <text x="180" y="740" font-size="42" font-weight="600" fill="#FFFFFF">Digital Experiences</text>
+    <text x="180" y="782" font-size="24" fill="#B9CDC4">Websites, products and interfaces that perform.</text>
+
+    <text x="90" y="900" font-size="34" font-weight="700" fill="#D4AF37">04</text>
+    <text x="180" y="900" font-size="42" font-weight="600" fill="#FFFFFF">Marketing &amp; Content</text>
+    <text x="180" y="942" font-size="24" fill="#B9CDC4">Campaigns, content and growth that compounds.</text>
+  </g>
+
+  <line x1="94" y1="1140" x2="986" y2="1140" stroke="#D4AF37" stroke-width="2" opacity="0.7"/>
+  <text x="540" y="1220" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="30" fill="#D4AF37">Where strategy meets creation</text>
+  <text x="540" y="1270" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="600" letter-spacing="5" fill="#8FB3A4">STRATEGY · DESIGN · DIGITAL · GROWTH</text>
+</svg>
