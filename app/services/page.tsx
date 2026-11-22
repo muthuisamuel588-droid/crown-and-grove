@@ -113,9 +113,8 @@ export default function ServicesPage() {
           <ul className="mt-8 space-y-2 text-sm leading-relaxed text-slate-400">
             <li>– Larger, multi-placement, multi-colour and complex designs are quoted separately.</li>
             <li>– Jerseys and bespoke merchandise remain quote-based per order; the fixed rates above cover standard DTF/no-cut print work.</li>
-            <li>– Artwork setup and design charges are for print-artwork preparation only. They are separate from the logo design packages listed above.</li>
             <li>– Printing of items you supply is charged at the branding-only rates; full-package prices include a blank item and printing.</li>
-            <li>– High-resolution PNG or PDF artwork is preferred. Setup fees may be reduced or waived on orders of 50+ pieces, as confirmed in your quote.</li>
+            <li>– High-resolution PNG or PDF artwork is preferred.</li>
           </ul>
         </div>
       </section>

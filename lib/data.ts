@@ -111,18 +111,6 @@ export const brandingPriceTables: PriceTable[] = [
       { label: "Jacket", values: ["1,050", "950", "900"] },
     ],
   },
-  {
-    title: "Artwork setup and design charges",
-    subtitle: "Print-artwork preparation only — not the separate logo design packages.",
-    headers: ["Service", "Description", "Price (KSh)"],
-    rows: [
-      { label: "Simple logo / text", values: ["Basic setup from client file", "200"] },
-      { label: "Custom logo design", values: ["New logo, 2–3 concepts", "800"] },
-      { label: "Complex artwork", values: ["Full illustration / multi-element", "1,500"] },
-      { label: "Minor adjustments", values: ["Resize, recolour, small edits", "100"] },
-      { label: "Rush design", values: ["Same-day urgent work", "+50%"] },
-    ],
-  },
 ];
 
 export type Project = {
