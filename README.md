@@ -65,6 +65,10 @@ The site publishes `/sitemap.xml`, `/robots.txt`, canonical URLs and Organizatio
 3. Request indexing for the homepage, services, about and contact pages.
 4. Create or claim a Google Business Profile so local “Crown & Grove” searches can show a map listing.
 
+## Analytics
+
+Web Analytics is enabled on the Vercel project, and `Analytics` is mounted in `app/layout.tsx`. Because the project is on the Hobby plan, custom events are not recorded there: successful inquiries are measured as page views of the no-index `/thank-you` route, and `/contact` page views show interest. If the project is upgraded to Pro, the existing `track()` calls in `InquiryForm.tsx` and `ServicesExplorer.tsx` will also report custom events.
+
 ## Design & motion
 
 - Logos and icons come from the official Crown & Grove brand kit (selected Concept 04). The current cream-theme palette is cream `#F7F4EC`, deep green `#1B4D3E`, gold `#C8A951` and copper `#B87333`, defined in `app/globals.css`.
