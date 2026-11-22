@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import Reveal from "@/components/Reveal";
 import { categories, pricing, services, type Service } from "@/lib/data";
 
@@ -43,6 +44,7 @@ function ServiceCard({ service }: { service: Service }) {
       )}
       <Link
         href={`/contact?service=${encodeURIComponent(service.name)}`}
+        onClick={() => track("Quote CTA clicked", { service: service.name })}
         className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg border border-accent-500/30 px-4 py-2 text-sm font-semibold text-accent-400 transition-colors hover:bg-accent-500/10"
       >
         Request a quote for this <span aria-hidden>→</span>

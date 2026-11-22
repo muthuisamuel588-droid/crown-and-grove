@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { contact, emailUrl, services, whatsappUrl } from "@/lib/data";
 
 const budgets = [
@@ -53,6 +54,7 @@ export default function InquiryForm({ initialService = "" }: { initialService?: 
     e.preventDefault();
     setStatus("submitting");
     setMessage("");
+    let failureReason = "delivery error";
     try {
       // FormSubmit is called from the browser: its free endpoint blocks Vercel's
       // server IPs, and it handles the reply-to address and delivery itself.
@@ -81,16 +83,19 @@ export default function InquiryForm({ initialService = "" }: { initialService?: 
       // Never claim delivery while the mailbox is unverified. The fallback
       // links at the bottom of the form are the reliable path until activation.
       if (activationPending) {
+        failureReason = "not activated";
         throw new Error("Our inquiry service is not active yet, so your brief was not sent. Please email crownandgroveoff@gmail.com or message us on WhatsApp using the links below.");
       }
       if (!res.ok || rejected) {
         throw new Error(data.message || "Your brief was not sent. Please email us or use WhatsApp using the links below.");
       }
 
+      track("Inquiry submitted", { service: form.service });
       setStatus("success");
       setMessage("Thank you — your brief is with us. We will reply within one business day.");
       setForm({ name: "", email: "", phone: "", service: "", budget: "", message: "", consent: false, gotcha: "" });
     } catch (err) {
+      track("Inquiry failed", { reason: failureReason });
       setStatus("error");
       setMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     }

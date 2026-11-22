@@ -54,6 +54,13 @@ export default function PrivacyPage() {
           </div>
 
           <div>
+            <h2 className="text-2xl font-bold text-white">Analytics</h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-400">
+              We use Vercel Analytics to understand which pages are visited and which calls to action are used, so we can improve the site. It records page views and interactions such as submitting an inquiry or clicking a quote link. We do not use it to collect the contents of your message, and we do not use it for advertising or sell analytics data.
+            </p>
+          </div>
+
+          <div>
             <h2 className="text-2xl font-bold text-white">Retention and security</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-400">
               We keep inquiry and client records for as long as needed for the engagement and for any period required by law. Access is limited to people who need the information for the work. No online service can be guaranteed completely secure, so please do not send passwords, licence keys or other secrets through the contact form.
