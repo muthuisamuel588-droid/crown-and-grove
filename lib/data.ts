@@ -22,6 +22,7 @@ export const services: Service[] = [
   { name: "Basic business website", launch: "KSh 15,000", standard: "KSh 45,000", category: "Web", description: "Up to 5 pages, mobile-responsive, basic SEO. Hosting and domain specified in quote.", icon: "▦" },
   { name: "E-commerce website", launch: "KSh 35,000", standard: "KSh 85,000", category: "Web", description: "Catalogue, M-Pesa/card checkout, admin panel. Integrations scoped separately.", icon: "▩" },
   { name: "Custom software development", launch: "KSh 250,000", standard: "KSh 750,000", category: "Software", description: "Starting price. Requirements discovery and written specification required.", icon: "⌘", monthly: "Support from KSh 15,000/mo (launch) or 40,000/mo (standard)" },
+  { name: "Tailor-made build + installation", launch: "Quote on request", standard: "Quote on request", category: "Software", description: "You decide how you want it built. Tell us the workflow, integrations and where it should run; we quote the build and installation together. No fixed price is published.", icon: "⚒", monthly: "Build and installation quoted per scope — you choose how it is built; ongoing support quoted separately" },
   { name: "Mobile app development", launch: "KSh 200,000", standard: "KSh 600,000", category: "Software", description: "Starting price, single platform (Android-first). Cross-platform quoted separately.", icon: "▯", monthly: "Support from KSh 15,000/mo (launch) or 40,000/mo (standard)" },
   { name: "POS system development", launch: "KSh 150,000", standard: "KSh 500,000", category: "Software", description: "Single till: checkout, stock, M-Pesa, eTIMS-ready. Tailored per business type across retail, hospitality, wholesale and service businesses. Multi-branch quoted separately.", icon: "▥", monthly: "Hosted POS from KSh 3,000/mo per till (launch) or 8,000/mo (standard)" },
   { name: "POS subscription (hosted)", launch: "KSh 3,000/mo", standard: "KSh 8,000/mo", category: "Software", description: "Per till. Includes updates, backups and support. Hardware excluded.", icon: "▧", monthly: "KSh 3,000/mo (launch) or 8,000/mo (standard), per till" },
@@ -48,6 +49,81 @@ export const pricing = {
   balancePercent: 40,
   latePaymentInterest: "2% per month",
 };
+
+export type PriceTable = {
+  title: string;
+  subtitle: string;
+  headers: string[];
+  rows: { label: string; values: string[] }[];
+};
+
+export const brandingPriceTables: PriceTable[] = [
+  {
+    title: "Branding only — you supply the item",
+    subtitle: "Print-only rates for a standard chest or A4 logo.",
+    headers: ["Item", "1–9 pcs", "10–49 pcs", "50+ pcs"],
+    rows: [
+      { label: "T-shirt (chest)", values: ["350", "300", "250"] },
+      { label: "Hoodie (front)", values: ["550", "480", "420"] },
+      { label: "Polo shirt", values: ["350", "300", "250"] },
+      { label: "Cap", values: ["250", "200", "180"] },
+      { label: "Tote / bag", values: ["280", "230", "200"] },
+      { label: "Jacket / reflector", values: ["450", "400", "350"] },
+      { label: "Mug / cup", values: ["200", "170", "150"] },
+      { label: "Small logo / text", values: ["180", "150", "130"] },
+      { label: "Apron", values: ["300", "250", "220"] },
+      { label: "Umbrella", values: ["350", "300", "280"] },
+      { label: "Leso / kanga", values: ["280", "240", "200"] },
+    ],
+  },
+  {
+    title: "Full package — garment and print",
+    subtitle: "Blank item plus printing, with total prices for small and bulk orders.",
+    headers: ["Item", "Blank", "Print", "Total 1–9", "Total 50+"],
+    rows: [
+      { label: "Basic T-shirt", values: ["350", "300", "650", "550"] },
+      { label: "Quality T-shirt", values: ["550", "320", "870", "750"] },
+      { label: "Polo shirt", values: ["500", "300", "800", "700"] },
+      { label: "Hoodie", values: ["1,200", "500", "1,700", "1,500"] },
+      { label: "Standard cap", values: ["200", "200", "400", "350"] },
+      { label: "Quality cap", values: ["350", "220", "570", "500"] },
+      { label: "Tote / bag", values: ["180", "230", "410", "350"] },
+      { label: "Reflector vest", values: ["180", "350", "530", "450"] },
+      { label: "Jacket", values: ["700", "400", "1,100", "950"] },
+      { label: "Mug / cup", values: ["120", "180", "300", "250"] },
+      { label: "Apron", values: ["250", "250", "500", "450"] },
+    ],
+  },
+  {
+    title: "Campaign and institution orders — from 50 pcs",
+    subtitle: "For schools, churches, NGOs, companies, clubs and events.",
+    headers: ["Item", "50–99", "100–199", "200+"],
+    rows: [
+      { label: "Campaign T-shirt", values: ["480", "420", "380"] },
+      { label: "Polo shirt", values: ["650", "580", "520"] },
+      { label: "Cap", values: ["320", "280", "250"] },
+      { label: "Apron", values: ["420", "380", "350"] },
+      { label: "Umbrella", values: ["750", "700", "650"] },
+      { label: "Leso / kanga", values: ["350", "320", "300"] },
+      { label: "Reflector vest", values: ["280", "250", "220"] },
+      { label: "Tote / bag", values: ["300", "270", "250"] },
+      { label: "Hoodie", values: ["1,550", "1,450", "1,350"] },
+      { label: "Jacket", values: ["1,050", "950", "900"] },
+    ],
+  },
+  {
+    title: "Artwork setup and design charges",
+    subtitle: "Print-artwork preparation only — not the separate logo design packages.",
+    headers: ["Service", "Description", "Price (KSh)"],
+    rows: [
+      { label: "Simple logo / text", values: ["Basic setup from client file", "200"] },
+      { label: "Custom logo design", values: ["New logo, 2–3 concepts", "800"] },
+      { label: "Complex artwork", values: ["Full illustration / multi-element", "1,500"] },
+      { label: "Minor adjustments", values: ["Resize, recolour, small edits", "100"] },
+      { label: "Rush design", values: ["Same-day urgent work", "+50%"] },
+    ],
+  },
+];
 
 export type Project = {
   title: string;

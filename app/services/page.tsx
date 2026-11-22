@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import CTABand from "@/components/CTABand";
 import ServicesExplorer from "@/components/ServicesExplorer";
-import { contact, pricing } from "@/lib/data";
+import { brandingPriceTables, contact, pricing } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Services & Pricing",
@@ -23,6 +23,10 @@ const plans = [
     highlight: true,
   },
 ];
+
+function formatRate(value: string) {
+  return /^\d[\d,]*$/.test(value) ? `KSh ${value}` : value;
+}
 
 export default function ServicesPage() {
   return (
@@ -65,6 +69,54 @@ export default function ServicesPage() {
 
         <div className="mt-14">
           <ServicesExplorer />
+        </div>
+
+        <div className="mt-16 rounded-2xl border border-brand-500/30 bg-white/[0.03] p-6 sm:p-8">
+          <p className="section-label">Branding &amp; print</p>
+          <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">DTF &amp; no-cut rates</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-400">
+            Fixed rates for a standard chest or A4 logo. No minimum order, fast turnaround and design support available. All prices are in Kenya Shillings (KSh) and valid during 2026, subject to change — your written quote confirms the final price.
+          </p>
+
+          <div className="mt-8 space-y-10">
+            {brandingPriceTables.map((table) => (
+              <div key={table.title}>
+                <h3 className="text-lg font-bold text-white">{table.title}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-slate-400">{table.subtitle}</p>
+                <div className="mt-4 overflow-x-auto">
+                  <table className="w-full min-w-[560px] border-collapse text-left text-sm">
+                    <thead>
+                      <tr>
+                        {table.headers.map((header) => (
+                          <th key={header} scope="col" className="border-b border-brand-500/30 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-brand-500">
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {table.rows.map((row) => (
+                        <tr key={row.label} className="border-b border-white/10 last:border-0">
+                          <th scope="row" className="px-3 py-2 font-medium text-white">{row.label}</th>
+                          {row.values.map((value, index) => (
+                            <td key={`${row.label}-${index}`} className="px-3 py-2 text-slate-300">{formatRate(value)}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <ul className="mt-8 space-y-2 text-sm leading-relaxed text-slate-400">
+            <li>– Larger, multi-placement, multi-colour and complex designs are quoted separately.</li>
+            <li>– Jerseys and bespoke merchandise remain quote-based per order; the fixed rates above cover standard DTF/no-cut print work.</li>
+            <li>– Artwork setup and design charges are for print-artwork preparation only. They are separate from the logo design packages listed above.</li>
+            <li>– Printing of items you supply is charged at the branding-only rates; full-package prices include a blank item and printing.</li>
+            <li>– High-resolution PNG or PDF artwork is preferred. Setup fees may be reduced or waived on orders of 50+ pieces, as confirmed in your quote.</li>
+          </ul>
         </div>
       </section>
 
