@@ -72,6 +72,10 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Crown & Grove. All rights reserved.</p>
+          <div className="flex gap-5">
+            <Link href="/privacy" className="hover:text-accent-400">Privacy policy</Link>
+            <Link href="/terms" className="hover:text-accent-400">Terms of service</Link>
+          </div>
           <p>Hosted on Vercel · Design. Build. Grow.</p>
         </div>
       </div>

@@ -42,7 +42,7 @@ These are centralised in `lib/data.ts`.
 
 The contact form submits directly from the visitor's browser to FormSubmit, which delivers inquiries to `crownandgroveoff@gmail.com`. The sender's email is set as the reply-to address, so you can reply directly from your inbox. (FormSubmit's free endpoint blocks Vercel server IPs, so the old `/api/inquiry` relay is not used for delivery.)
 
-**One-time setup:** after the first inquiry is submitted, check `crownandgroveoff@gmail.com` for a confirmation email from FormSubmit and click the confirmation link. Until that is done, FormSubmit holds submissions instead of delivering them. No API key or Vercel environment variable is required for email delivery.
+**One-time setup:** after the first inquiry is submitted, check `crownandgroveoff@gmail.com` for a confirmation email from FormSubmit and click the confirmation link. Until that is done, FormSubmit holds submissions instead of delivering them. The form will not claim success while activation is pending; it tells the visitor to use the email or WhatsApp fallback instead. No API key or Vercel environment variable is required for email delivery.
 
 The form also offers prefilled `mailto:` links, and the contact page, CTA band and footer include a WhatsApp click-to-chat link. The WhatsApp number and URL helper live in `lib/data.ts` (`contact.whatsapp` and `whatsappUrl()`).
 
@@ -53,6 +53,16 @@ The form also offers prefilled `mailto:` links, and the contact page, CTA band a
 3. Add the environment variables above if email delivery is required.
 4. Set `NEXT_PUBLIC_SITE_URL` to your final Vercel URL (for example `https://crown-and-grove.vercel.app`) so SEO metadata, the sitemap and robots.txt use the correct domain.
 5. Deploy. Vercel auto-detects Next.js — no build configuration needed.
+
+For manual prebuilt production deploys on Windows:
+
+```powershell
+vercel build --prod
+powershell -File scripts\dereference-vercel-functions.ps1
+vercel deploy --prebuilt --prod --yes
+```
+
+The dereference step is required because Windows symlinks in `.vercel/output/functions` otherwise fail during upload.
 
 ## Google indexing
 

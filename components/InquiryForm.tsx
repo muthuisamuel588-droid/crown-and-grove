@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { contact, emailUrl, services, whatsappUrl } from "@/lib/data";
 
 const budgets = [
@@ -25,6 +26,7 @@ export default function InquiryForm() {
     budget: "",
     message: "",
     consent: false,
+    gotcha: "",
   });
 
   const emailBody = [
@@ -62,6 +64,7 @@ export default function InquiryForm() {
           _replyto: form.email,
           _template: "table",
           _captcha: "false",
+          _gotcha: form.gotcha,
           email: form.email,
           name: form.name,
           phone: form.phone || "Not provided",
@@ -72,16 +75,21 @@ export default function InquiryForm() {
         }),
       });
       const data = (await res.json()) as { success?: string | boolean; message?: string };
-      // The first-ever submission returns success:"false" while the mailbox
-      // activation link is being sent. Treat that as accepted.
       const activationPending = /needs activation|activate form/i.test(data.message || "");
       const rejected = data.success === false || data.success === "false";
-      if (!res.ok || (rejected && !activationPending)) {
-        throw new Error(data.message || "Something went wrong. Please try again.");
+
+      // Never claim delivery while the mailbox is unverified. The fallback
+      // links at the bottom of the form are the reliable path until activation.
+      if (activationPending) {
+        throw new Error("Our inquiry service is not active yet, so your brief was not sent. Please email crownandgroveoff@gmail.com or message us on WhatsApp using the links below.");
       }
+      if (!res.ok || rejected) {
+        throw new Error(data.message || "Your brief was not sent. Please email us or use WhatsApp using the links below.");
+      }
+
       setStatus("success");
       setMessage("Thank you — your brief is with us. We will reply within one business day.");
-      setForm({ name: "", email: "", phone: "", service: "", budget: "", message: "", consent: false });
+      setForm({ name: "", email: "", phone: "", service: "", budget: "", message: "", consent: false, gotcha: "" });
     } catch (err) {
       setStatus("error");
       setMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
@@ -106,6 +114,12 @@ export default function InquiryForm() {
 
   return (
     <form onSubmit={submit} className="card-surface space-y-5 rounded-2xl p-6 sm:p-8">
+      <div aria-hidden="true" className="absolute -left-[9999px] top-0">
+        <label>
+          Leave this field empty
+          <input name="_gotcha" tabIndex={-1} autoComplete="off" value={form.gotcha} onChange={(e) => update("gotcha", e.target.value)} />
+        </label>
+      </div>
       <div>
         <h2 className="text-2xl font-bold text-white">Tell us about your project</h2>
         <p className="mt-2 text-sm text-slate-400">The more detail you give us, the more accurate our quote.</p>
@@ -166,11 +180,11 @@ export default function InquiryForm() {
           checked={form.consent}
           onChange={(e) => update("consent", e.target.checked)}
         />
-        <span>I agree that Crown & Grove may use these details to respond to my inquiry. My information will not be shared with third parties.</span>
+        <span>I agree that Crown & Grove may use these details to respond to my inquiry, as described in the <Link href="/privacy" className="text-accent-400 hover:underline">Privacy Policy</Link>. My information will not be sold or shared for unrelated marketing.</span>
       </label>
 
       {status === "error" && (
-        <p role="alert" className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">{message}</p>
+        <p role="alert" aria-live="assertive" className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">{message}</p>
       )}
 
       <button type="submit" disabled={status === "submitting"} className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60">

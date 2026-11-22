@@ -48,13 +48,10 @@ async function deliverInquiry(data: z.infer<typeof inquirySchema>) {
     // A non-JSON response still counts as a failure below.
   }
 
-  // FormSubmit returns success:"false" with an "Activate Form" message on the
-  // very first submission. That is expected while the mailbox is being verified.
+  // An unverified mailbox is a delivery failure, not a successful inquiry.
   const activationPending = Boolean(result.message && /needs activation|activate form/i.test(result.message));
-
   if (activationPending) {
-    console.info("FormSubmit activation is pending for", INQUIRY_TO_EMAIL);
-    return;
+    throw new Error(`FormSubmit activation is pending for ${INQUIRY_TO_EMAIL}; the inquiry was not delivered.`);
   }
 
   const failed =
